@@ -7,7 +7,7 @@ import { Fontisto} from "@expo/vector-icons"
 import { useAuth } from "../hooks/useAuth";
 
 export function SignIn(){
-    const {signIn, user} = useAuth()
+    const {signIn, isUserLoading} = useAuth()
     return (
         <Center flex={1} bgColor="black.900">    
             <Logo/>
@@ -18,7 +18,9 @@ export function SignIn(){
                 title="ENTRAR COM O GOOGLE"
                 leftIcon={<Icon as = {Fontisto} name="google" color="white" size="md"/>}
                 mt={12}
-                onPress={SignIn}
+                onPress={signIn}
+                isLoading={isUserLoading}
+                _loading={{_spinner:{color: 'white'}}}
             />
                 <Text color="gray.200"  fontSize="sm" mt={10} textAlign="center">
                     Não utilizamos nenhuma informação além {'\n'}do seu e-mail para criação de sua conta.
